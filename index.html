@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem Vindo ao Site do Geração Eleita</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: url('Logo GE') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            margin: 0;
+            font-size: 2em;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .verse {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .image {
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            position: relative;
+        }
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #555;
+            border-radius: 10px;
+        }
+        .overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            z-index: 1;
+        }
+        .options {
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+        .send-options {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Geração Eleita - Palavra do Dia</h1>
+        <h2>Palavra do Dia</h2>
+    </header>
+    <button onclick="generateVerse()">Clique aqui para receber a palavra do dia</button>
+    <div class="verse" id="verse"></div>
+    <div class="image" id="imageContainer">
+        <p>Deseja gerar uma imagem deste versículo?</p>
+        <button onclick="generateImage()">Sim</button>
+        <button onclick="hideImageOptions()">Não</button>
+        <div id="image"></div>
+    </div>
+    <div class="options" id="optionsContainer">
+        <p>Deseja enviar este versículo para alguém?</p>
+        <button onclick="askToSend()">Enviar</button>
+    </div>
+    <div class="send-options" id="sendOptionsContainer" style="display:none;">
+        <p>Como você gostaria de compartilhar este versículo?</p>
+        <button onclick="sendToWhatsAppContact()">Para um contato</button>
+        <button onclick="sendToWhatsAppGroup()">Para um grupo</button>
+        <button onclick="hideSendOptions()">Cancelar</button>
+    </div>
+    <script>
+        const versiculos = [
+            "João 3:16 - Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.",
+            "Romanos 8:28 - E sabemos que todas as coisas contribuem juntamente para o bem daqueles que amam a Deus, daqueles que são chamados segundo o seu propósito.",
+            "Mateus 28:20 - Eis que estou convosco todos os dias, até à consumação dos séculos."
+        ];
+
+        function generateVerse() {
+            const index = Math.floor(Math.random() * versiculos.length);
+            const verse = versiculos[index];
+            document.getElementById('verse').innerText = verse;
+            document.getElementById('imageContainer').style.display = 'block';
+            document.getElementById('optionsContainer').style.display = 'block';
+            document.getElementById('image').innerHTML = '';
+        }
+
+        function generateImage() {
+            const verseText = document.getElementById('verse').innerText;
+            const imageUrl = `https://picsum.photos/400/200?blur=2&random=1`;
+            const imageElement = `<div style="position: relative;"><img src="${imageUrl}" alt="Versículo da Bíblia"><div class="overlay">${verseText}</div></div>`;
+            document.getElementById('image').innerHTML = imageElement;
+        }
+
+        function hideImageOptions() {
+            document.getElementById('imageContainer').style.display = 'none';
+        }
+
+        function askToSend() {
+            document.getElementById('sendOptionsContainer').style.display = 'block';
+        }
+
+        function sendToWhatsAppContact() {
+            const verseText = document.getElementById('verse').innerText;
+            const message = `Confira este versículo da Bíblia: ${verseText}`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            hideSendOptions();
+        }
+
+        function sendToWhatsAppGroup() {
+            const verseText = document.getElementById('verse').innerText;
+            const message = `Confira este versículo da Bíblia: ${verseText}`;
+            const groupLink = "https://chat.whatsapp.com/HPZi1jXzsTeDtOIotiCXJV";
+            const whatsappUrl = `${groupLink}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            hideSendOptions();
+        }
+
+        function hideSendOptions() {
+            document.getElementById('sendOptionsContainer').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
