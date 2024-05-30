@@ -88,6 +88,24 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             z-index: 999;
         }
+        /* Estilo para garantir que o rodapé fique na parte inferior da página */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: #333; /* Cor de fundo do rodapé */
+            color: #fff; /* Cor do texto do rodapé */
+            text-align: center; /* Centraliza o conteúdo dentro do rodapé */
+        }
         /* Estilo para os links de redes sociais */
         .social-link {
             text-align: center;
@@ -456,7 +474,7 @@
     <footer>
         <div class="social-link">
             <a href="https://www.instagram.com/geracao.eleita2024?igsh=MzNlNGNkZWQ4Mg==" target="_blank">
-                <img src="logo-instagram.png" alt="Instagram">
+                <img src="instagram.jpeg" alt="Instagram">
             </a>
         </div>
     </footer>
