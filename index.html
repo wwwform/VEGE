@@ -465,7 +465,7 @@
 
         async function sendToWhatsAppContact() {
             const verseText = document.getElementById('verse').innerText;
-            const message = `Confira este versículo da Bíblia: ${verseText}`;
+            const message = `${verseText}`;
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
             hideSendOptions();
