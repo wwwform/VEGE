@@ -406,7 +406,7 @@
 
         function generateImage() {
             const verseText = document.getElementById('verse').innerText;
-            const imageUrl = `https://picsum.photos/400/200?blur=2&random=1`;
+            const imageUrl = `https://picsum.photos/400/200?blur=2&random=${Math.floor(Math.random() * 1000)}`;
             const imageElement = `<div style="position: relative;"><img src="${imageUrl}" alt="Versículo da Bíblia"><div class="overlay">${verseText}</div></div>`;
             document.getElementById('image').innerHTML = imageElement;
         }
@@ -421,7 +421,8 @@
 
         function sendToWhatsAppContact() {
             const verseText = document.getElementById('verse').innerText;
-            const message = `Confira este versículo da Bíblia: ${verseText}`;
+            const imageUrl = document.querySelector('.image img').src;
+            const message = `Confira este versículo da Bíblia: ${verseText} \n\nImagem: ${imageUrl}`;
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
             hideSendOptions();
@@ -429,7 +430,8 @@
 
         function sendToWhatsAppGroup() {
             const verseText = document.getElementById('verse').innerText;
-            const message = `Confira este versículo da Bíblia: ${verseText}`;
+            const imageUrl = document.querySelector('.image img').src;
+            const message = `Confira este versículo da Bíblia: ${verseText} \n\nImagem: ${imageUrl}`;
             const groupLink = "https://chat.whatsapp.com/HPZi1jXzsTeDtOIotiCXJV";
             const whatsappUrl = `${groupLink}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
