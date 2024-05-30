@@ -420,9 +420,6 @@
 
         async function sendToWhatsAppContact() {
             const verseText = document.getElementById('verse').innerText;
-            const imageElement = document.querySelector('.image div');
-            const canvas = await html2canvas(imageElement);
-            const imageUrl = canvas.toDataURL('image/png');
             const message = `Confira este versículo da Bíblia: ${verseText}`;
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
