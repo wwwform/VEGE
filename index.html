@@ -88,6 +88,22 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             z-index: 999;
         }
+        /* Estilo para os links de redes sociais */
+        .social-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .social-link a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #ffd700; /* Cor do link amarelo */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .social-link a:hover {
+            color: #f3c500; /* Cor do link amarelo mais claro */
+        }
     </style>
 </head>
 <body>
@@ -107,6 +123,13 @@
     <div class="send-options" id="sendOptionsContainer" style="display:none;">
         <p>Como você gostaria de compartilhar este versículo?</p>
         <button onclick="sendToWhatsAppContact()">Para um contato</button>
+    </div>
+    <!-- Links para as redes sociais -->
+    <div class="social-link">
+        <a href="https://www.instagram.com/geracao.eleita2024?igsh=MzNlNGNkZWQ4Mg==" target="_blank">
+            <img src="instagram.jpeg" alt="Instagram" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.instagram.com/seu_usuario_do_instagram/" target="_blank">Siga-nos no Instagram</a>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
